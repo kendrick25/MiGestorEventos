@@ -1,0 +1,23 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Eventos</title>
+    <link rel="stylesheet" href="{% static 'css\menu.css' %}">
+</head>
+<body>
+    <div class="menu">
+        <a href="{% url 'lista_eventos' %}" class="menu-item">Lista de eventos</a>
+        <a href="{% url 'crear_evento' %}" class="menu-item">Crear un nuevo evento</a>
+        <a href="{% url 'organizadores' %}" class="menu-item">Lista de organizadores</a>
+        <a href="{% url 'organizadorForm' %}" class="menu-item">Crear un organizador</a>
+
+        {% if user.is_authenticated %}
+            <a href="{% url 'cerrarSesion' %}" class="menu-item">Cerrar Sesión</a>
+        {% endif %}
+    </div>
+</body>
+</html>

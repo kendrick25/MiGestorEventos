@@ -1,0 +1,9 @@
+<a href="{% url 'index' %}">Volver al inicio</a>
+<h1>Crear Nuevo Organizador</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Guardar</button>
+</form>
+
+<a href="{% url 'organizadores' %}">Volver a la lista de organizadores</a>

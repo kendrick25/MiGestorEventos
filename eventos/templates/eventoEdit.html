@@ -1,0 +1,13 @@
+
+{% block content %}
+  <h1>Editar Evento</h1>
+  
+  <form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    
+    <button type="submit">Guardar cambios</button>
+  </form>
+  
+  <a href="{% url 'lista_eventos' %}">Volver a la lista de eventos</a>
+{% endblock %}

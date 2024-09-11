@@ -1,0 +1,37 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos</title>
+    <!-- Cambio para enlazar correctamente el archivo CSS estático -->
+    <link rel="stylesheet" href="{% static 'css/StyleEventos.css' %}">
+</head>
+<body>
+    <div class="container">
+        <!-- Enlace para volver al inicio -->
+        <a href="{% url 'index' %}" class="back-link">Volver al inicio</a>
+        
+        <!-- Título de la página -->
+        <h1>Eventos</h1>
+        
+        <!-- Lista de eventos -->
+        <ul class="event-list">
+            {% for evento in eventos %}
+                <li class="event-item">
+                    {{ evento.nombre }} - Organizado por {{ evento.organizador.nombre }}
+                    <!-- Enlace para editar cada evento -->
+                    <a href="{% url 'editar_evento' evento.pk %}" class="edit-link">Editar</a>
+                </li>
+            {% empty %}
+                <li>No hay eventos</li>
+            {% endfor %}
+        </ul>
+        
+        <!-- Enlace para crear un nuevo evento -->
+        <a href="{% url 'crear_evento' %}" class="create-link">Crear un nuevo evento</a>
+    </div>
+</body>
+</html>

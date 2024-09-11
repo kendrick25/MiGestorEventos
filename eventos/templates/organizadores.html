@@ -1,0 +1,11 @@
+<a href="{% url 'index' %}">Volver al inicio</a>
+<h1>Organizadores</h1>
+<ul>
+    {% for organizador in organizadores %}
+        <li>{{ organizador.nombre }}</li>
+    {% empty %}
+        <li>No hay organizadores disponibles.</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'organizadorForm' %}">Crear un nuevo organizador</a>

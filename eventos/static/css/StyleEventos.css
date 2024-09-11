@@ -1,0 +1,102 @@
+/* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Estilos del título */
+h1 {
+    text-align: center;
+    color: #4CAF50;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+/* Lista de eventos */
+.event-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.event-item {
+    background-color: #e9f5e9;
+    margin: 10px 0;
+    padding: 15px;
+    border-left: 5px solid #4CAF50;
+    font-size: 18px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Estilos para los enlaces */
+a {
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.back-link, .create-link, .edit-link {
+    display: inline-block;
+    margin-top: 20px;
+    color: #4CAF50;
+    background-color: transparent;
+    border: 2px solid #4CAF50;
+    padding: 10px 15px;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+a:hover {
+    color: #fff;
+    background-color: #4CAF50;
+}
+
+/* Enlace para editar evento */
+.edit-link {
+    color: #ff9800;
+    border-color: #ff9800;
+    margin-left: 10px;
+    font-size: 14px;
+}
+
+.edit-link:hover {
+    color: white;
+    background-color: #ff9800;
+}
+
+/* Adaptaciones para pantallas pequeñas */
+@media (max-width: 600px) {
+    .container {
+        padding: 10px;
+        margin: 20px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    .event-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .back-link, .create-link, .edit-link {
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+    }
+}

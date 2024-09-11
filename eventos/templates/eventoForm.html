@@ -1,0 +1,23 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Evento</title>
+    <link rel="stylesheet" href="{% static 'css/StyleCrearEvento.css' %}">
+</head>
+<body>
+    <div class="container">
+        <a href="{% url 'index' %}" class="back-link">Volver al inicio</a>
+        <h1>Crear Evento</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Guardar</button>
+        </form>
+        <a href="{% url 'lista_eventos' %}" class="back-link">Volver a la lista de eventos</a>
+    </div>
+</body>
+</html>
