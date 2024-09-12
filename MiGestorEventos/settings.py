@@ -70,10 +70,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "MiGestorEventos.wsgi.application"
 #Login
-LOGIN_URL = '/iniciarSesion/'
+LOGIN_URL = '/IniciarSesion/'
 
 # Configura el URL de redirección después de iniciar sesión
-LOGIN_REDIRECT_URL = 'index'
+LOGIN_REDIRECT_URL = '/'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
