@@ -1,0 +1,118 @@
+/* Estilo general del cuerpo */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilo del encabezado y navegación */
+header {
+    background-color: #4CAF50;
+    padding: 10px 20px;
+    color: white;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Alinea los elementos */
+    align-items: center;
+}
+
+.back-link {
+    text-decoration: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #333;
+    transition: background-color 0.3s;
+    font-weight: bold;
+}
+
+.back-link:hover {
+    background-color: #555;
+}
+
+.back-link:active {
+    background-color: #444;
+}
+
+/* Estilo del contenedor del formulario */
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Estilo del título */
+.container h1 {
+    margin-top: 0;
+    color: #333;
+}
+
+/* Estilo del formulario */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form .form-group {
+    margin-bottom: 15px;
+}
+
+form .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+form .form-group input, 
+form .form-group select, 
+form .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+form .form-group input:focus, 
+form .form-group select:focus, 
+form .form-group textarea:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+.btn-submit {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-submit:hover {
+    background-color: #45a049;
+}
+
+.btn-submit:active {
+    background-color: #3e8e41;
+}
+
+/* Ajustes para dispositivos móviles */
+@media (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+
+    .btn-submit {
+        width: 100%;
+        font-size: 14px;
+    }
+}

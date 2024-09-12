@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eventos</title>
-    <!-- Cambio para enlazar correctamente el archivo CSS estático -->
+    <!-- Enlazar correctamente el archivo CSS estático -->
     <link rel="stylesheet" href="{% static 'css/StyleEventos.css' %}">
 </head>
 <body>
@@ -21,9 +21,17 @@
         <ul class="event-list">
             {% for evento in eventos %}
                 <li class="event-item">
-                    {{ evento.nombre }} - Organizado por {{ evento.organizador.nombre }}
-                    <!-- Enlace para editar cada evento -->
-                    <a href="{% url 'editar_evento' evento.pk %}" class="edit-link">Editar</a>
+                    <div class="event-info">
+                        {{ evento.nombre }} - Organizado por {{ evento.organizador.nombre }}
+                    </div>
+                    <!-- Contenedor de las acciones de evento -->
+                    <div class="event-actions">
+                        <!-- Enlaces de edición y eliminación -->
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'editar_evento' evento.pk %}" class="edit-link">Editar</a>
+                            <a href="{% url 'eliminar_evento' evento.pk %}" class="delete-link">Eliminar</a>
+                        {% endif %}
+                    </div>
                 </li>
             {% empty %}
                 <li>No hay eventos</li>
@@ -31,7 +39,9 @@
         </ul>
         
         <!-- Enlace para crear un nuevo evento -->
-        <a href="{% url 'crear_evento' %}" class="create-link">Crear un nuevo evento</a>
+        {% if user.is_authenticated %}
+            <a href="{% url 'crear_evento' %}" class="create-link">Crear un nuevo evento</a>
+        {% endif %}
     </div>
 </body>
 </html>

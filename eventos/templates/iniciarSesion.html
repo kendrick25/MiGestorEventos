@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar sesión</title>
+    <link rel="stylesheet" href="{% static 'css/StyleLogin.css' %}">
+</head>
+<body>
+    <a href="{% url 'index' %}">Volver al inicio</a>
+
+    <div class="login-container">
+        <h2>Iniciar sesión</h2>
+
+        <form method="post" action="{% url 'iniciarSesion' %}">
+            {% csrf_token %}
+            {{ form.as_p }}  <!-- Renderiza automáticamente los campos de usuario y contraseña -->
+            <button type="submit" class="btn-login">Iniciar sesión</button>
+        </form>
+
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li class="message">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <!-- Enlace para registro -->
+        <p>¿No tienes una cuenta? <a href="{% url 'registro' %}">Regístrate aquí</a></p>
+    </div>
+</body>
+</html>

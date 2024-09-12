@@ -6,18 +6,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página de Eventos</title>
-    <link rel="stylesheet" href="{% static 'css\menu.css' %}">
+    <link rel="stylesheet" href="{% static 'css/menu.css' %}">
 </head>
 <body>
+    <header>
+        <nav class="navbar">
+            <!-- Mostrar enlace de iniciar sesión solo si el usuario no está autenticado -->
+            {% if not user.is_authenticated %}
+                <a href="{% url 'iniciarSesion' %}" class="menu-item login">Iniciar Sesión</a>
+            {% endif %}
+            <!-- Mostrar enlace de cerrar sesión solo si el usuario está autenticado -->
+            {% if user.is_authenticated %}
+                <a href="{% url 'cerrarSesion' %}" class="menu-item logout">Cerrar Sesión</a>
+            {% endif %}
+        </nav>
+    </header>
+    
+    <!-- Menú principal -->
     <div class="menu">
+        <h1>Opciones del Menú</h1>
         <a href="{% url 'lista_eventos' %}" class="menu-item">Lista de eventos</a>
-        <a href="{% url 'crear_evento' %}" class="menu-item">Crear un nuevo evento</a>
-        <a href="{% url 'organizadores' %}" class="menu-item">Lista de organizadores</a>
-        <a href="{% url 'organizadorForm' %}" class="menu-item">Crear un organizador</a>
-
+        <!-- Mostrar enlaces de crear evento y crear organizador solo si el usuario está autenticado -->
         {% if user.is_authenticated %}
-            <a href="{% url 'cerrarSesion' %}" class="menu-item">Cerrar Sesión</a>
+            <a href="{% url 'crear_evento' %}" class="menu-item">Crear un nuevo evento</a>
+            <a href="{% url 'organizadorForm' %}" class="menu-item">Crear un organizador</a>
         {% endif %}
+        <a href="{% url 'organizadores' %}" class="menu-item">Lista de organizadores</a>
     </div>
 </body>
 </html>

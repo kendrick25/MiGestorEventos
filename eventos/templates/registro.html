@@ -1,7 +1,35 @@
-<a href="{% url 'index' %}">Volver al inicio</a>
-<h2>Registro</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Registrar</button>
-</form>
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuario</title>
+    <link rel="stylesheet" href="{% static 'css/StyleRegistro.css' %}">
+</head>
+<body>
+    <a href="{% url 'index' %}" class="back-link">Volver al inicio</a>
+
+    <div class="register-container">
+        <h2>Registro</h2>
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.as_p }}
+            </div>
+            <button type="submit" class="btn-register">Registrar</button>
+        </form>
+
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li class="message">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <p>¿Ya tienes una cuenta? <a href="{% url 'iniciarSesion' %}" class="login-link">Inicia sesión aquí</a></p>
+    </div>
+</body>
+</html>
