@@ -1,4 +1,4 @@
-{% load static %}
+{% load static %} 
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -8,14 +8,21 @@
     <link rel="stylesheet" href="{% static 'css/StyleLogin.css' %}">
 </head>
 <body>
-    <a href="{% url 'index' %}">Volver al inicio</a>
+    <a href="{% url 'index' %}" class="btn-link">Volver al inicio</a>
 
     <div class="login-container">
         <h2>Iniciar sesión</h2>
 
         <form method="post" action="{% url 'iniciarSesion' %}">
             {% csrf_token %}
-            {{ form.as_p }}  <!-- Renderiza automáticamente los campos de usuario y contraseña -->
+            <div class="form-group">
+                <label for="username">Nombre de usuario</label>
+                {{ form.username }}
+            </div>
+            <div class="form-group">
+                <label for="password">Contraseña</label>
+                {{ form.password }}
+            </div>
             <button type="submit" class="btn-login">Iniciar sesión</button>
         </form>
 
@@ -28,7 +35,7 @@
         {% endif %}
 
         <!-- Enlace para registro -->
-        <p>¿No tienes una cuenta? <a href="{% url 'registro' %}">Regístrate aquí</a></p>
+        <p class="register-link">¿No tienes una cuenta? <a href="{% url 'registro' %}">Regístrate aquí</a></p>
     </div>
 </body>
 </html>

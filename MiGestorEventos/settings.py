@@ -72,6 +72,9 @@ WSGI_APPLICATION = "MiGestorEventos.wsgi.application"
 #Login
 LOGIN_URL = '/iniciarSesion/'
 
+# Configura el URL de redirección después de iniciar sesión
+LOGIN_REDIRECT_URL = 'index'
+
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
@@ -105,7 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = "es"
 
 TIME_ZONE = "UTC"
 

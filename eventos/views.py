@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.urls import reverse_lazy
@@ -10,6 +11,7 @@ from .forms import EventoForm, OrganizadorForm, CustomUserCreationForm
 
 def index(request):
     return render(request, 'index.html')
+
 def eventoList(request):
     eventos = Evento.objects.all()
     return render(request, 'evento.html', {'eventos': eventos})
@@ -20,6 +22,7 @@ def eliminar_evento(request, pk):
     evento.delete()
     return redirect('lista_eventos')
 
+@login_required
 def crear_evento(request):
     if request.method == 'POST':
         form = EventoForm(request.POST)
@@ -35,15 +38,13 @@ class organizadoresList(ListView):
     template_name = 'organizadores.html'
     context_object_name = 'organizadores'
 
-
-# Vista para crear un nuevo organizador
-class CrearOrganizador(CreateView):
+class CrearOrganizador(LoginRequiredMixin, CreateView):
     model = Organizador
     form_class = OrganizadorForm
     template_name = 'organizadoresForm.html'
     success_url = reverse_lazy('organizadores')
 
-@login_required(login_url='iniciarSesion')
+@login_required
 def eventoEditar(request, pk):
     evento = get_object_or_404(Evento, pk=pk)
     if request.method == 'POST':
@@ -69,10 +70,8 @@ def iniciarSesion(request):
                 messages.error(request, 'Nombre de usuario o contraseña incorrectos')
         else:
             messages.error(request, 'Nombre de usuario o contraseña incorrectos')
-
     else:
         form = AuthenticationForm()
-
     return render(request, 'iniciarSesion.html', {'form': form})
 
 def register(request):
@@ -87,6 +86,8 @@ def register(request):
     else:
         form = CustomUserCreationForm()
     return render(request, 'registro.html', {'form': form})
+
+@login_required
 def cerrarSesion(request):
     logout(request)
     return redirect('index')
