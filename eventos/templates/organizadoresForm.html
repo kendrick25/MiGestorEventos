@@ -1,9 +1,31 @@
-<a href="{% url 'index' %}">Volver al inicio</a>
-<h1>Crear Nuevo Organizador</h1>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Guardar</button>
-</form>
+{% load static %}
 
-<a href="{% url 'organizadores' %}">Volver a la lista de organizadores</a>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Nuevo Organizador</title>
+    <!-- Enlazar correctamente el archivo CSS estático -->
+    <link rel="stylesheet" href="{% static 'css/StyleRegistrarOrganizador.css' %}">
+</head>
+<body>
+    <div class="container">
+        <!-- Enlace para volver al inicio -->
+        <a href="{% url 'index' %}" class="back-link">Volver al inicio</a>
+        
+        <!-- Título de la página -->
+        <h1>Crear Nuevo Organizador</h1>
+        
+        <!-- Formulario para crear un nuevo organizador -->
+        <form method="post" class="form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="submit-btn">Guardar</button>
+        </form>
+        
+        <!-- Enlace para volver a la lista de organizadores -->
+        <a href="{% url 'organizadores' %}" class="back-to-list-link">Volver a la lista de organizadores</a>
+    </div>
+</body>
+</html>

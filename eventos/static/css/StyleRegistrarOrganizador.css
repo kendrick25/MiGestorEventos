@@ -1,0 +1,70 @@
+* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Estilos del título */
+h1 {
+    text-align: center;
+    color: #4CAF50;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+/* Estilos del formulario */
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+form p {
+    margin-bottom: 15px;
+}
+
+.submit-btn {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #45a049;
+}
+
+/* Estilos para los enlaces */
+a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #4CAF50;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #45a049;
+}
+
+/* Enlace para volver a la lista de organizadores */
+.back-to-list-link {
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 16px;
+}

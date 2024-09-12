@@ -1,11 +1,33 @@
-<a href="{% url 'index' %}">Volver al inicio</a>
-<h1>Organizadores</h1>
-<ul>
-    {% for organizador in organizadores %}
-        <li>{{ organizador.nombre }}</li>
-    {% empty %}
-        <li>No hay organizadores disponibles.</li>
-    {% endfor %}
-</ul>
+{% load static %}
 
-<a href="{% url 'organizadorForm' %}">Crear un nuevo organizador</a>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organizadores</title>
+    <!-- Enlazar correctamente el archivo CSS estático -->
+    <link rel="stylesheet" href="{% static 'css/StyleOrganizadores.css' %}">
+</head>
+<body>
+    <div class="container">
+        <!-- Enlace para volver al inicio -->
+        <a href="{% url 'index' %}" class="back-link">Volver al inicio</a>
+        
+        <!-- Título de la página -->
+        <h1>Organizadores</h1>
+        
+        <!-- Lista de organizadores -->
+        <ul class="organizer-list">
+            {% for organizador in organizadores %}
+                <li class="organizer-item">{{ organizador.nombre }}</li>
+            {% empty %}
+                <li>No hay organizadores disponibles.</li>
+            {% endfor %}
+        </ul>
+        
+        <!-- Enlace para crear un nuevo organizador -->
+        <a href="{% url 'organizadorForm' %}" class="create-link">Crear un nuevo organizador</a>
+    </div>
+</body>
+</html>
