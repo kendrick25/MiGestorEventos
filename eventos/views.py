@@ -14,6 +14,12 @@ def eventoList(request):
     eventos = Evento.objects.all()
     return render(request, 'evento.html', {'eventos': eventos})
 
+@login_required
+def eliminar_evento(request, pk):
+    evento = get_object_or_404(Evento, pk=pk)
+    evento.delete()
+    return redirect('lista_eventos')
+
 def crear_evento(request):
     if request.method == 'POST':
         form = EventoForm(request.POST)
@@ -37,7 +43,7 @@ class CrearOrganizador(CreateView):
     template_name = 'organizadoresForm.html'
     success_url = reverse_lazy('organizadores')
 
-@login_required
+@login_required(login_url='iniciarSesion')
 def eventoEditar(request, pk):
     evento = get_object_or_404(Evento, pk=pk)
     if request.method == 'POST':

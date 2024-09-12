@@ -69,7 +69,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "MiGestorEventos.wsgi.application"
-
+#Login
+LOGIN_URL = '/iniciarSesion/'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
